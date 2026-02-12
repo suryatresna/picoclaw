@@ -50,6 +50,24 @@ type TelegramConfig struct {
 	AllowFrom []string `json:"allow_from" env:"PICOCLAW_CHANNELS_TELEGRAM_ALLOW_FROM"`
 }
 
+type GoogleChatConfig struct {
+	// ServiceAccountFile is the path to the GCP service account JSON key file.
+	// If empty, Application Default Credentials (ADC) are used instead.
+	ServiceAccountFile string `json:"service_account_file" yaml:"service_account_file" mapstructure:"service_account_file"`
+	// ProjectID is the Google Cloud project ID.
+	ProjectID string `json:"project_id" yaml:"project_id" mapstructure:"project_id"`
+	// Port is the HTTP port for the webhook listener (default "8080").
+	Port string `json:"port" yaml:"port" mapstructure:"port"`
+	// Endpoint is the HTTP path where Google Chat sends events (default "/googlechat").
+	Endpoint string `json:"endpoint" yaml:"endpoint" mapstructure:"endpoint"`
+	// VerificationToken is the token configured in the Google Chat API settings.
+	// When set, every incoming request is verified against this token.
+	VerificationToken string `json:"verification_token" yaml:"verification_token" mapstructure:"verification_token"`
+	// AllowFrom is a list of permitted sender identifiers
+	// (e.g. "users/12345" or email addresses).
+	AllowFrom []string `json:"allow_from" yaml:"allow_from" mapstructure:"allow_from"`
+}
+
 type FeishuConfig struct {
 	Enabled           bool     `json:"enabled" env:"PICOCLAW_CHANNELS_FEISHU_ENABLED"`
 	AppID             string   `json:"app_id" env:"PICOCLAW_CHANNELS_FEISHU_APP_ID"`

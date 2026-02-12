@@ -15,11 +15,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sipeed/picoclaw/pkg/bus"
-	"github.com/sipeed/picoclaw/pkg/config"
-	"github.com/sipeed/picoclaw/pkg/providers"
-	"github.com/sipeed/picoclaw/pkg/session"
-	"github.com/sipeed/picoclaw/pkg/tools"
+	"github.com/suryatresna/picoclaw/pkg/bus"
+	"github.com/suryatresna/picoclaw/pkg/config"
+	"github.com/suryatresna/picoclaw/pkg/providers"
+	"github.com/suryatresna/picoclaw/pkg/session"
+	"github.com/suryatresna/picoclaw/pkg/tools"
 )
 
 type AgentLoop struct {
@@ -200,12 +200,12 @@ func (al *AgentLoop) processMessage(ctx context.Context, msg bus.InboundMessage)
 
 	// Context compression logic
 	newHistory := al.sessions.GetHistory(msg.SessionKey)
-	
+
 	// Token Awareness (Dynamic)
 	// Trigger if history > 20 messages OR estimated tokens > 75% of context window
 	tokenEstimate := al.estimateTokens(newHistory)
 	threshold := al.contextWindow * 75 / 100
-	
+
 	if len(newHistory) > 20 || tokenEstimate > threshold {
 		if _, loading := al.summarizing.LoadOrStore(msg.SessionKey, true); !loading {
 			go func() {
@@ -267,7 +267,7 @@ func (al *AgentLoop) summarizeSession(sessionKey string) {
 
 		s1, _ := al.summarizeBatch(ctx, part1, "")
 		s2, _ := al.summarizeBatch(ctx, part2, "")
-		
+
 		// Merge them
 		mergePrompt := fmt.Sprintf("Merge these two conversation summaries into one cohesive summary:\n\n1: %s\n\n2: %s", s1, s2)
 		resp, err := al.provider.Chat(ctx, []providers.Message{{Role: "user", Content: mergePrompt}}, nil, al.model, map[string]interface{}{
@@ -321,4 +321,3 @@ func (al *AgentLoop) estimateTokens(messages []providers.Message) int {
 	}
 	return total
 }
-

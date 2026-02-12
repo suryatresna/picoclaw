@@ -3,7 +3,7 @@ package channels
 import (
 	"context"
 
-	"github.com/sipeed/picoclaw/pkg/bus"
+	"github.com/suryatresna/picoclaw/pkg/bus"
 )
 
 type Channel interface {

@@ -15,7 +15,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/sipeed/picoclaw/pkg/config"
+	"github.com/suryatresna/picoclaw/pkg/config"
 )
 
 type HTTPProvider struct {

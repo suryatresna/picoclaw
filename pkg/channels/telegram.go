@@ -15,9 +15,9 @@ import (
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 
-	"github.com/sipeed/picoclaw/pkg/bus"
-	"github.com/sipeed/picoclaw/pkg/config"
-	"github.com/sipeed/picoclaw/pkg/voice"
+	"github.com/suryatresna/picoclaw/pkg/bus"
+	"github.com/suryatresna/picoclaw/pkg/config"
+	"github.com/suryatresna/picoclaw/pkg/voice"
 )
 
 type TelegramChannel struct {

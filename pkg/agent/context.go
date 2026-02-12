@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/sipeed/picoclaw/pkg/providers"
-	"github.com/sipeed/picoclaw/pkg/skills"
+	"github.com/suryatresna/picoclaw/pkg/providers"
+	"github.com/suryatresna/picoclaw/pkg/skills"
 )
 
 type ContextBuilder struct {
