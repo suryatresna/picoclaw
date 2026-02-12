@@ -976,7 +976,7 @@ func skillsHelp() {
 	fmt.Println()
 	fmt.Println("Examples:")
 	fmt.Println("  picoclaw skills list")
-	fmt.Println("  picoclaw skills install sipeed/picoclaw-skills/weather")
+	fmt.Println("  picoclaw skills install suryatresna/picoclaw-skills/weather")
 	fmt.Println("  picoclaw skills install-builtin")
 	fmt.Println("  picoclaw skills list-builtin")
 	fmt.Println("  picoclaw skills remove weather")
@@ -1010,7 +1010,7 @@ func skillsListCmd(loader *skills.SkillsLoader) {
 func skillsInstallCmd(installer *skills.SkillInstaller) {
 	if len(os.Args) < 4 {
 		fmt.Println("Usage: picoclaw skills install <github-repo>")
-		fmt.Println("Example: picoclaw skills install sipeed/picoclaw-skills/weather")
+		fmt.Println("Example: picoclaw skills install suryatresna/picoclaw-skills/weather")
 		return
 	}
 
